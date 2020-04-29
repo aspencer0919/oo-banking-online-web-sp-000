@@ -13,7 +13,13 @@ class Transfer
   end
 
   def execute_transation
+    if sender.balance > @amount && @status == "pending"
+      @sender.balance -= @amount
+      @receiver.balance += @amount
+      @status = "complete"
+    else
 
+    end  
   end
 
   def reverse_transfer
